@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Details Form</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"], 
+textarea, 
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.file-upload {
+    position: relative;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload label {
+    color: #ff6347;
+    cursor: pointer;
+}
+
+#fileList {
+    margin-top: 10px;
+    color: #555;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    label, input[type="text"], textarea {
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Donation Details</h2>
+        <form id="donationForm">
+            <div class="form-group">
+                <label for="title">Donar Name:</label>
+                <input type="text" id="title" placeholder="Enter donation title" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Donar E-mail</label>
+                <input type="text" id="title" placeholder="Enter donation title" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Donation Amount</label>
+                <input type="text" id="title" placeholder="Enter donation title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Donation Title</label>
+                <input type="text" id="title" placeholder="Enter donation title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Donation Description</label>
+                <textarea id="description" rows="4" placeholder="Enter donation description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="attachments">Attachments</label>
+                <div class="file-upload" id="fileUploadBox">
+                    <input type="file" id="attachments" multiple required>
+                    <label for="attachments" id="fileLabel">Choose file or drop here</label>
+                    <div id="fileList"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Donation Category</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="category" value="Clothing"> Clothing</label>
+                    <label><input type="checkbox" name="category" value="Food"> Food</label>
+                    <label><input type="checkbox" name="category" value="Toys"> Toys</label>
+                    <label><input type="checkbox" name="category" value="Books"> Books</label>
+                    <label><input type="checkbox" name="category" value="Other"> Other</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" required> I agree to the terms and conditions.</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit Request</button>
+        </form>
+    </div>
+
+    <script>
+const fileInput = document.getElementById("attachments");
+const fileList = document.getElementById("fileList");
+const fileLabel = document.getElementById("fileLabel");
+
+fileInput.addEventListener("change", updateFileDisplay);
+
+function updateFileDisplay() {
+    while (fileList.firstChild) {
+        fileList.removeChild(fileList.firstChild);
+    }
+    
+    const curFiles = fileInput.files;
+    if (curFiles.length === 0) {
+        fileLabel.textContent = "Choose file or drop here";
+    } else {
+        fileLabel.textContent = "Files selected:";
+        const list = document.createElement("ul");
+        fileList.appendChild(list);
+        
+        for (let i = 0; i < curFiles.length; i++) {
+            const listItem = document.createElement("li");
+            listItem.textContent = curFiles[i].name;
+            list.appendChild(listItem);
+        }
+    }
+}
+
+const form = document.getElementById("donationForm");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const categories = [...document.querySelectorAll("input[name='category']:checked")].map(input => input.value);
+    
+    console.log({
+        title: title,
+        description: description,
+        categories: categories,
+        files: fileInput.files
+    });
+    alert("Form submitted successfully!");
+});
+    </script>
+</body>
+</html>

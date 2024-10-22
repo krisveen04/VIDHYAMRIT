@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Form</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: -10px;
+
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"], 
+textarea, 
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.file-upload {
+    position: relative;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload label {
+    color: #ff6347;
+    cursor: pointer;
+}
+
+#fileList {
+    margin-top: 10px;
+    color: #555;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #c9302c;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo h1 {
+    color: #0033ff;
+    font-size: 28px;
+    text-decoration: none;
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-buttons .sign-in {
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-buttons .sign-in {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #333;
+}
+
+
+.footer {
+    background-color: #4A4EB4;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-column {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3, 
+.footer-column h4 {
+    margin-bottom: 15px;
+}
+
+.footer-column p {
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.footer-column ul li a:hover {
+    opacity: 1;
+}
+
+.footer-socials a {
+    margin-right: 10px;
+    color: #f5f9ff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    color: #fff;
+    opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    label, input[type="text"], textarea {
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+    }
+}
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration: none;">VIDYAMRIT</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="donation.html">Scholarship</a></li>
+                <li><a href="donationcode.html">Donations</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="login.html" class="sign-in">Log In</a>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <div class="form-container">
+        <h2>Donation Details</h2>
+        <form id="donationForm">
+            <div class="form-group">
+                <label for="title">Donar Name:</label>
+                <input type="text" id="title" placeholder="Enter donar name" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Donar E-mail:</label>
+                <input type="text" id="title" placeholder="Enter donar email" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Donation Amount:</label>
+                <input type="text" id="title" placeholder="Enter donation amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Donation Title:</label>
+                <input type="text" id="title" placeholder="Enter donation title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Donation Description:</label>
+                <textarea id="description" rows="4" placeholder="Enter donation description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="attachments">Attachments (Upload the screenshot of payment)</label>
+                <div class="file-upload" id="fileUploadBox">
+                    <input type="file" id="attachments" multiple required>
+                    <label for="attachments" id="fileLabel">Choose file or drop here</label>
+                    <div id="fileList"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Donation Category:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="category" value="Clothing"> Clothing</label>
+                    <label><input type="checkbox" name="category" value="Food"> Food</label>
+                    <label><input type="checkbox" name="category" value="Toys"> Toys</label>
+                    <label><input type="checkbox" name="category" value="Books"> Books</label>
+                    <label><input type="checkbox" name="category" value="Other"> Other</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" required> I agree to the terms and conditions.</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit Request</button>
+        </form>
+    </div>
+    <br>
+      <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>VIDYAMRIT</h3>
+                <p>queries@Vidyamrit.com</p>
+                <p>+91 123 456 789</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>About us</h4>
+                <ul>
+                    <li>Company</li>
+                    <li>Teams</li>
+                    <li>Profile</li>
+                    <li>Career</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Courses</h4>
+                <ul>
+                    <li>Primary Education</li>
+                    <li>Middle secondary</li>
+                    <li>Senior secondary</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Stay up to date</h4>
+                <ul>
+                    <li>Become an Instructor</li>
+                    <li>Become a Student</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 All Rights Reserved By Vidyamrit</p>
+        </div>
+    </footer>
+    <script>
+        const fileInput = document.getElementById("attachments");
+const fileList = document.getElementById("fileList");
+const fileLabel = document.getElementById("fileLabel");
+
+fileInput.addEventListener("change", updateFileDisplay);
+
+function updateFileDisplay() {
+    while (fileList.firstChild) {
+        fileList.removeChild(fileList.firstChild);
+    }
+    
+    const curFiles = fileInput.files;
+    if (curFiles.length === 0) {
+        fileLabel.textContent = "Choose file or drop here";
+    } else {
+        fileLabel.textContent = "Files selected:";
+        const list = document.createElement("ul");
+        fileList.appendChild(list);
+        
+        for (let i = 0; i < curFiles.length; i++) {
+            const listItem = document.createElement("li");
+            listItem.textContent = curFiles[i].name;
+            list.appendChild(listItem);
+        }
+    }
+}
+
+const form = document.getElementById("donationForm");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const categories = [...document.querySelectorAll("input[name='category']:checked")].map(input => input.value);
+    
+    console.log({
+        title: title,
+        description: description,
+        categories: categories,
+        files: fileInput.files
+    });
+    alert("Form submitted successfully!");
+});
+    </script>
+</body>
+</html>
